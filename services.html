@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | RazuQ Nexus Technologies</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Additional Styles for Services Page */
+        .services-hero {
+            padding: 150px 0 80px;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            margin-top: 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .services-hero h1 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .services-hero p {
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        .services-hero .highlight {
+            color: #60a5fa;
+        }
+        
+        .detailed-services {
+            padding: 80px 0;
+        }
+        
+        .service-category {
+            margin-bottom: 80px;
+        }
+        
+        .service-category h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .service-category h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .service-detail-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .service-icon-large {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .service-icon-large i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-header h3 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .tech-tag {
+            background: #e0f2fe;
+            color: var(--primary);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .service-features {
+            margin: 25px 0;
+        }
+        
+        .service-features h4 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--gray);
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .pricing-info {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+        
+        .pricing-info h4 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .cta-service {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .cta-service i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .cta-service:hover i {
+            transform: translateX(5px);
+        }
+        
+        .process-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .process-step h4 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .process-step::after {
+            content: '→';
+            position: absolute;
+            right: -30px;
+            top: 30px;
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.5;
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        @media (max-width: 992px) {
+            .process-step::after {
+                display: none;
+            }
+            
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .service-icon-large {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .service-detail-card {
+                padding: 25px;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+            }
+        }
+        
+        .why-choose-us {
+            padding: 80px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .benefit-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html"
+            <a href="index.html" class="logo-img">
+    <div class="logo-main">RazuQ<span>Nexus</span></div>
+    <div class="logo-tagline">Technologies</div>
+    <div class="logo-services">AI, Blockchain, Web3, Web Development | Cloud & DevOps</div>
+</a>
+            >
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Services Hero -->
+    <section class="services-hero">
+        <div class="container">
+            <h1>Our <span class="highlight">Comprehensive</span> Services</h1>
+            <p>End-to-end IT & FinTech solutions tailored for startups and growing businesses. We transform your ideas into scalable, secure, and innovative digital products.</p>
+        </div>
+    </section>
+
+    <!-- Detailed Services -->
+    <section class="detailed-services">
+        <div class="container">
+            <!-- Web Development -->
+            <div class="service-category">
+                <h2>Web Development</h2>
+                <div class="service-detail-card">
+                    <div class="service-header">
+                        <div class="service-icon-large">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div>
+                            <h3>Full-Stack Web Solutions</h3>
+                            <p>From simple websites to complex web applications</p>
+                        </div>
+                    </div>
+                    
+                    <p>We build responsive, high-performance websites and web applications using modern technologies. Our focus is on creating user-friendly interfaces with robust backend systems.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Python/Django</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">AWS/Azure</span>
+                    </div>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul class="feature-list">
+                            <li>Responsive design (Mobile-first approach)</li>
+                            <li>SEO optimization & fast loading</li>
+                            <li>Secure authentication systems</li>
+                            <li>Database design & integration</li>
+                            <li>Payment gateway integration</li>
+                            <li>Admin dashboard development</li>
+                            <li>API development & integration</li>
+                            <li>Performance optimization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-info">
+                        <h4>Starting from</h4>
+                        <div class="price-tag">₹25,000 - ₹2,00,000+</div>
+                        <p>Custom pricing based on project complexity and requirements</p>
+                        <a href="contact.html" class="cta-service">Get Free Quote <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Apps -->
+            <div class="service-category">
+                <h2>Mobile Applications</h2>
+                <div class="service-detail-card">
+                    <div class="service-header">
+                        <div class="service-icon-large">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Cross-Platform Mobile Apps</h3>
+                            <p>iOS & Android applications with single codebase</p>
+                        </div>
+                    </div>
+                    
+                    <p>We develop native-feeling mobile applications that work seamlessly on both iOS and Android platforms, reducing development time and cost.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">Push Notifications</span>
+                        <span class="tech-tag">App Store Deployment</span>
+                    </div>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul class="feature-list">
+                            <li>UI/UX design for mobile</li>
+                            <li>Cross-platform development</li>
+                            <li>Backend integration</li>
+                            <li>Push notification setup</li>
+                            <li>In-app purchases setup</li>
+                            <li>App store submission assistance</li>
+                            <li>Post-launch maintenance</li>
+                            <li>Performance monitoring</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-info">
+                        <h4>Starting from</h4>
+                        <div class="price-tag">₹50,000 - ₹3,00,000+</div>
+                        <p>Depending on features, platforms, and complexity</p>
+                        <a href="contact.html" class="cta-service">Discuss Your App Idea <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FinTech Solutions -->
+            <div class="service-category">
+                <h2>FinTech Solutions</h2>
+                <div class="service-detail-card">
+                    <div class="service-header">
+                        <div class="service-icon-large">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div>
+                            <h3>Financial Technology Services</h3>
+                            <p>Secure, compliant, and innovative financial solutions</p>
+                        </div>
+                    </div>
+                    
+                    <p>We develop cutting-edge financial technology solutions including payment systems, financial dashboards, banking integrations, and blockchain applications.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Payment Gateways</span>
+                        <span class="tech-tag">Blockchain</span>
+                        <span class="tech-tag">Razorpay/Stripe</span>
+                        <span class="tech-tag">Security Protocols</span>
+                        <span class="tech-tag">Financial APIs</span>
+                        <span class="tech-tag">Data Encryption</span>
+                    </div>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul class="feature-list">
+                            <li>Payment gateway integration</li>
+                            <li>Financial dashboard development</li>
+                            <li>Banking API integration</li>
+                            <li>Secure transaction systems</li>
+                            <li>Regulatory compliance assistance</li>
+                            <li>Financial reporting systems</li>
+                            <li>Wallet & card management</li>
+                            <li>Fraud detection systems</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-info">
+                        <h4>Starting from</h4>
+                        <div class="price-tag">₹75,000 - ₹5,00,000+</div>
+                        <p>Complexity varies based on compliance requirements</p>
+                        <a href="contact.html" class="cta-service">Secure Your FinTech Solution <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud Services -->
+            <div class="service-category">
+                <h2>Cloud & DevOps</h2>
+                <div class="service-detail-card">
+                    <div class="service-header">
+                        <div class="service-icon-large">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div>
+                            <h3>Cloud Infrastructure & DevOps</h3>
+                            <p>Scalable cloud solutions and automated deployment</p>
+                        </div>
+                    </div>
+                    
+                    <p>We help businesses migrate to the cloud, set up scalable infrastructure, and implement DevOps practices for efficient development and deployment.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Azure</span>
+                        <span class="tech-tag">Google Cloud</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">CI/CD</span>
+                        <span class="tech-tag">Terraform</span>
+                    </div>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul class="feature-list">
+                            <li>Cloud migration strategy</li>
+                            <li>Infrastructure as Code (IaC)</li>
+                            <li>Containerization with Docker</li>
+                            <li>CI/CD pipeline setup</li>
+                            <li>Monitoring & alerting systems</li>
+                            <li>Cost optimization strategies</li>
+                            <li>Disaster recovery planning</li>
+                            <li>Security best practices</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-info">
+                        <h4>Starting from</h4>
+                        <div class="price-tag">₹20,000/month</div>
+                        <p>Managed services or one-time setup available</p>
+                        <a href="contact.html" class="cta-service">Optimize Your Infrastructure <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cyber Security -->
+            <div class="service-category">
+                <h2>Cyber Security</h2>
+                <div class="service-detail-card">
+                    <div class="service-header">
+                        <div class="service-icon-large">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Security Solutions</h3>
+                            <p>Protect your digital assets with enterprise-grade security</p>
+                        </div>
+                    </div>
+                    
+                    <p>We provide comprehensive security services including vulnerability assessments, penetration testing, compliance audits, and ongoing security monitoring.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Penetration Testing</span>
+                        <span class="tech-tag">Vulnerability Assessment</span>
+                        <span class="tech-tag">GDPR/Compliance</span>
+                        <span class="tech-tag">SSL/TLS</span>
+                        <span class="tech-tag">Security Audits</span>
+                        <span class="tech-tag">Firewall Setup</span>
+                    </div>
+                    
+                    <div class="service-features">
+                        <h4>What's Included:</h4>
+                        <ul class="feature-list">
+                            <li>Security vulnerability assessment</li>
+                            <li>Penetration testing</li>
+                            <li>Security compliance auditing</li>
+                            <li>Secure code review</li>
+                            <li>Incident response planning</li>
+                            <li>Security training for teams</li>
+                            <li>Regular security updates</li>
+                            <li>24/7 monitoring services</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-info">
+                        <h4>Starting from</h4>
+                        <div class="price-tag">₹15,000 - ₹1,00,000+</div>
+                        <p>One-time audits or ongoing security packages</p>
+                        <a href="contact.html" class="cta-service">Secure Your Business <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our <span>Development Process</span></h2>
+            <p class="section-subtitle">A transparent, collaborative approach to ensure project success</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Discovery & Planning</h4>
+                    <p>We understand your requirements, define scope, and create detailed project plan</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Design & Prototyping</h4>
+                    <p>Create wireframes, UI/UX designs, and interactive prototypes for feedback</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Development</h4>
+                    <p>Agile development with regular updates and milestone deliveries</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Testing & QA</h4>
+                    <p>Rigorous testing across devices and scenarios to ensure quality</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h4>Deployment & Support</h4>
+                    <p>Launch your product and provide ongoing maintenance and support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose <span>RazuQ Nexus</span></h2>
+            <p class="section-subtitle">What sets us apart in the competitive IT services market</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Fast Delivery</h4>
+                    <p>Agile development methodology ensures faster time-to-market</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-indian-rupee-sign"></i>
+                    <h4>Cost-Effective</h4>
+                    <p>High-quality solutions at competitive Indian market rates</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-headset"></i>
+                    <h4>Dedicated Support</h4>
+                    <p>Direct communication with the founder for all projects</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Scalable Solutions</h4>
+                    <p>Future-proof architectures that grow with your business</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="contact.html" class="btn btn-primary">Start Your Project Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>RazuQ<span>Nexus</span></h3>
+                    <p>Innovative IT & FinTech solutions for modern businesses. Transforming ideas into digital reality.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">Mobile Apps</a></li>
+                        <li><a href="services.html">FinTech Solutions</a></li>
+                        <li><a href="services.html">Cloud Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> contact@razuqnexus.com</li>
+                        <li><i class="fas fa-phone"></i> +91 XXXXX XXXXX</li>
+                        <li><i class="fas fa-map-marker-alt"></i> India</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2023</span> RazuQ Nexus Technologies. All rights reserved. | Founder: Inayath Hussain</p>
+                <p>Startup Registration No: XXXXXXX</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Update current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
