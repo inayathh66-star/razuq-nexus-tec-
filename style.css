@@ -541,16 +541,17 @@ span {
         display: none; /* Hide services on mobile */
     }
 }
-/* ==================== FLOWER LOGO STYLES ==================== */
-.logo-flower {
+/* ==================== RAZUQ NEXUS ANIMATED LOGO ==================== */
+.logo-container {
     display: flex;
     align-items: center;
     gap: 15px;
     text-decoration: none;
     color: inherit;
+    position: relative;
 }
 
-.flower-container {
+.logo-wrapper {
     position: relative;
     width: 50px;
     height: 50px;
@@ -560,138 +561,263 @@ span {
     cursor: pointer;
 }
 
-.flower {
-    width: 40px;
-    height: 40px;
+/* Main logo container with flower animation */
+.razuq-logo {
+    width: 100%;
+    height: 100%;
     position: relative;
     transform-origin: center;
-    transition: transform 0.6s ease;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.flower:hover {
+/* Flower petal effect around your logo */
+.logo-petal {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.8), rgba(192, 57, 43, 0.9));
+    border-radius: 50%;
+    transform-origin: center;
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+}
+
+/* Petal positions forming flower shape */
+.logo-petal:nth-child(1) { 
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.9), rgba(192, 57, 43, 1));
+    transform: rotate(0deg) translateY(-25px) scale(0.8);
+}
+.logo-petal:nth-child(2) { 
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.8), rgba(192, 57, 43, 0.9));
+    transform: rotate(45deg) translateY(-25px) scale(0.7);
+}
+.logo-petal:nth-child(3) { 
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.7), rgba(192, 57, 43, 0.8));
+    transform: rotate(90deg) translateY(-25px) scale(0.6);
+}
+.logo-petal:nth-child(4) { 
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.6), rgba(192, 57, 43, 0.7));
+    transform: rotate(135deg) translateY(-25px) scale(0.5);
+}
+.logo-petal:nth-child(5) { 
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.9), rgba(41, 128, 185, 1));
+    transform: rotate(180deg) translateY(-25px) scale(0.8);
+}
+.logo-petal:nth-child(6) { 
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.8), rgba(41, 128, 185, 0.9));
+    transform: rotate(225deg) translateY(-25px) scale(0.7);
+}
+.logo-petal:nth-child(7) { 
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.7), rgba(41, 128, 185, 0.8));
+    transform: rotate(270deg) translateY(-25px) scale(0.6);
+}
+.logo-petal:nth-child(8) { 
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.6), rgba(41, 128, 185, 0.7));
+    transform: rotate(315deg) translateY(-25px) scale(0.5);
+}
+
+/* Hover effect - flower opens */
+.logo-wrapper:hover .razuq-logo {
     transform: scale(1.1);
 }
 
-.flower-petal {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    border-radius: 50% 0 50% 50%;
-    transform-origin: center;
-    box-shadow: 0 3px 8px rgba(231, 76, 60, 0.3);
-    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+.logo-wrapper:hover .logo-petal {
+    opacity: 1;
+    transform: rotate(var(--rotate)) translateY(-25px) scale(1) !important;
+    animation: petalGlow 1.5s infinite alternate;
 }
 
-.flower:hover .flower-petal {
-    border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+@keyframes petalGlow {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.2); }
 }
 
-/* Petal positions */
-.flower-petal:nth-child(1) { transform: rotate(0deg) translateY(-15px); }
-.flower-petal:nth-child(2) { transform: rotate(45deg) translateY(-15px); }
-.flower-petal:nth-child(3) { transform: rotate(90deg) translateY(-15px); }
-.flower-petal:nth-child(4) { transform: rotate(135deg) translateY(-15px); }
-.flower-petal:nth-child(5) { transform: rotate(180deg) translateY(-15px); }
-.flower-petal:nth-child(6) { transform: rotate(225deg) translateY(-15px); }
-.flower-petal:nth-child(7) { transform: rotate(270deg) translateY(-15px); }
-.flower-petal:nth-child(8) { transform: rotate(315deg) translateY(-15px); }
-
-/* Flower center */
-.flower-center {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+/* Your actual logo styling */
+.actual-logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #e74c3c, #3498db);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
     z-index: 2;
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
-    animation: pulse 2s infinite alternate;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+    overflow: hidden;
 }
 
-@keyframes pulse {
-    0% { transform: translate(-50%, -50%) scale(1); }
-    100% { transform: translate(-50%, -50%) scale(1.1); }
+.actual-logo::before {
+    content: "RQ";
+    display: block;
+    animation: logoTextGlow 2s infinite alternate;
 }
 
-/* Flower opening animation */
-@keyframes flowerOpen {
-    0% { transform: scale(0.8) rotate(0deg); }
-    50% { transform: scale(1.1) rotate(180deg); }
-    100% { transform: scale(1) rotate(360deg); }
+@keyframes logoTextGlow {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.05); opacity: 0.9; }
 }
 
-.flower-open {
-    animation: flowerOpen 1.2s ease-out;
+.actual-logo::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 70%
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
 }
 
 /* Logo text styles */
-.logo-text {
+.logo-text-content {
     display: flex;
     flex-direction: column;
 }
 
-.logo-main {
+.logo-main-text {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 24px;
     color: #333;
     line-height: 1;
+    letter-spacing: -0.5px;
 }
 
-.logo-main span {
+.logo-main-text span {
     color: #e74c3c;
+    position: relative;
 }
 
-.logo-tagline {
+.logo-main-text span::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #e74c3c, #3498db);
+    border-radius: 2px;
+}
+
+.logo-tagline-text {
     font-family: 'Roboto', sans-serif;
     font-size: 10px;
     color: #3498db;
     font-weight: 500;
     letter-spacing: 1px;
     margin-top: 2px;
+    text-transform: uppercase;
+}
+
+/* Flower opening animation on load */
+@keyframes flowerBloom {
+    0% { 
+        transform: scale(0.3) rotate(0deg);
+        opacity: 0;
+    }
+    50% { 
+        transform: scale(1.1) rotate(180deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+.logo-bloom {
+    animation: flowerBloom 1.5s ease-out forwards;
 }
 
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
-    .flower-container {
+    .logo-wrapper {
         width: 40px;
         height: 40px;
     }
     
-    .flower {
+    .logo-petal {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .logo-petal:nth-child(1),
+    .logo-petal:nth-child(2),
+    .logo-petal:nth-child(3),
+    .logo-petal:nth-child(4),
+    .logo-petal:nth-child(5),
+    .logo-petal:nth-child(6),
+    .logo-petal:nth-child(7),
+    .logo-petal:nth-child(8) {
+        transform: rotate(var(--rotate)) translateY(-20px) scale(0.8);
+    }
+    
+    .actual-logo {
         width: 32px;
         height: 32px;
+        font-size: 14px;
+        border-radius: 8px;
     }
     
-    .flower-petal {
-        width: 16px;
-        height: 16px;
+    .logo-main-text {
+        font-size: 18px;
     }
     
-    .flower-petal:nth-child(1) { transform: rotate(0deg) translateY(-12px); }
-    .flower-petal:nth-child(2) { transform: rotate(45deg) translateY(-12px); }
-    .flower-petal:nth-child(3) { transform: rotate(90deg) translateY(-12px); }
-    .flower-petal:nth-child(4) { transform: rotate(135deg) translateY(-12px); }
-    .flower-petal:nth-child(5) { transform: rotate(180deg) translateY(-12px); }
-    .flower-petal:nth-child(6) { transform: rotate(225deg) translateY(-12px); }
-    .flower-petal:nth-child(7) { transform: rotate(270deg) translateY(-12px); }
-    .flower-petal:nth-child(8) { transform: rotate(315deg) translateY(-12px); }
-    
-    .flower-center {
-        width: 12px;
-        height: 12px;
-    }
-    
-    .logo-main {
-        font-size: 20px;
-    }
-    
-    .logo-tagline {
+    .logo-tagline-text {
         font-size: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container {
+        gap: 10px;
+    }
+    
+    .logo-wrapper {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .logo-petal {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .logo-petal:nth-child(1),
+    .logo-petal:nth-child(2),
+    .logo-petal:nth-child(3),
+    .logo-petal:nth-child(4),
+    .logo-petal:nth-child(5),
+    .logo-petal:nth-child(6),
+    .logo-petal:nth-child(7),
+    .logo-petal:nth-child(8) {
+        transform: rotate(var(--rotate)) translateY(-15px) scale(0.8);
+    }
+    
+    .actual-logo {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
     }
 }

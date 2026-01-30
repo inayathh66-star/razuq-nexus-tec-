@@ -106,33 +106,72 @@ document.addEventListener('DOMContentLoaded', () => {
         yearSpan.textContent = new Date().getFullYear();
     }
 });
-// Flower Logo Animation
-const flowerLogo = document.getElementById('flowerLogo');
-let isOpen = false;
+// RazuQ Nexus Logo Animation
+const razuqLogo = document.getElementById('razuqLogo');
+const logoPetals = document.querySelectorAll('.logo-petal');
+let isLogoBlooming = false;
 
-// Animate flower on hover
-flowerLogo.addEventListener('mouseenter', function() {
-    if (!isOpen) {
-        this.classList.add('flower-open');
-        isOpen = true;
-        setTimeout(() => {
-            this.classList.remove('flower-open');
-        }, 1200);
+// Set rotation values for petals
+logoPetals.forEach((petal, index) => {
+    const rotation = index * 45;
+    petal.style.setProperty('--rotate', `${rotation}deg`);
+});
+
+// Flower blooming animation on hover
+razuqLogo.addEventListener('mouseenter', function() {
+    if (!isLogoBlooming) {
+        this.classList.add('logo-bloom');
+        isLogoBlooming = true;
+        
+        // Animate petals sequentially
+        logoPetals.forEach((petal, index) => {
+            setTimeout(() => {
+                petal.style.opacity = '1';
+                petal.style.transform = `rotate(${index * 45}deg) translateY(-25px) scale(1)`;
+            }, index * 100);
+        });
     }
 });
 
-// Reset animation after 3 seconds
-setInterval(() => {
-    isOpen = false;
-}, 3000);
+razuqLogo.addEventListener('mouseleave', function() {
+    // Close flower petals with delay
+    logoPetals.forEach((petal, index) => {
+        setTimeout(() => {
+            petal.style.opacity = '0';
+            petal.style.transform = `rotate(${index * 45}deg) translateY(-25px) scale(${0.8 - index * 0.05})`;
+        }, index * 50);
+    });
+    
+    setTimeout(() => {
+        isLogoBlooming = false;
+        this.classList.remove('logo-bloom');
+    }, 800);
+});
 
-// Animate flower on page load
+// Animate logo on page load
 window.addEventListener('load', function() {
     setTimeout(() => {
-        flowerLogo.classList.add('flower-open');
-        isOpen = true;
+        razuqLogo.classList.add('logo-bloom');
+        isLogoBlooming = true;
+        
+        // Bloom animation on load
+        logoPetals.forEach((petal, index) => {
+            setTimeout(() => {
+                petal.style.opacity = '1';
+                petal.style.transform = `rotate(${index * 45}deg) translateY(-25px) scale(1)`;
+                
+                // Then close after showing
+                setTimeout(() => {
+                    petal.style.opacity = '0';
+                    petal.style.transform = `rotate(${index * 45}deg) translateY(-25px) scale(${0.8 - index * 0.05})`;
+                }, 2000 + (index * 100));
+            }, 500 + (index * 150));
+        });
+        
+        // Reset bloom state
         setTimeout(() => {
-            flowerLogo.classList.remove('flower-open');
-        }, 1200);
-    }, 500);
+            isLogoBlooming = false;
+            razuqLogo.classList.remove('logo-bloom');
+        }, 3500);
+    }, 800);
 });
