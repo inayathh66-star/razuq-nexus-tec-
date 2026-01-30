@@ -106,3 +106,33 @@ document.addEventListener('DOMContentLoaded', () => {
         yearSpan.textContent = new Date().getFullYear();
     }
 });
+// Flower Logo Animation
+const flowerLogo = document.getElementById('flowerLogo');
+let isOpen = false;
+
+// Animate flower on hover
+flowerLogo.addEventListener('mouseenter', function() {
+    if (!isOpen) {
+        this.classList.add('flower-open');
+        isOpen = true;
+        setTimeout(() => {
+            this.classList.remove('flower-open');
+        }, 1200);
+    }
+});
+
+// Reset animation after 3 seconds
+setInterval(() => {
+    isOpen = false;
+}, 3000);
+
+// Animate flower on page load
+window.addEventListener('load', function() {
+    setTimeout(() => {
+        flowerLogo.classList.add('flower-open');
+        isOpen = true;
+        setTimeout(() => {
+            flowerLogo.classList.remove('flower-open');
+        }, 1200);
+    }, 500);
+});

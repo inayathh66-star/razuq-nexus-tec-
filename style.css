@@ -541,3 +541,157 @@ span {
         display: none; /* Hide services on mobile */
     }
 }
+/* ==================== FLOWER LOGO STYLES ==================== */
+.logo-flower {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.flower-container {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.flower {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    transform-origin: center;
+    transition: transform 0.6s ease;
+}
+
+.flower:hover {
+    transform: scale(1.1);
+}
+
+.flower-petal {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border-radius: 50% 0 50% 50%;
+    transform-origin: center;
+    box-shadow: 0 3px 8px rgba(231, 76, 60, 0.3);
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.flower:hover .flower-petal {
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* Petal positions */
+.flower-petal:nth-child(1) { transform: rotate(0deg) translateY(-15px); }
+.flower-petal:nth-child(2) { transform: rotate(45deg) translateY(-15px); }
+.flower-petal:nth-child(3) { transform: rotate(90deg) translateY(-15px); }
+.flower-petal:nth-child(4) { transform: rotate(135deg) translateY(-15px); }
+.flower-petal:nth-child(5) { transform: rotate(180deg) translateY(-15px); }
+.flower-petal:nth-child(6) { transform: rotate(225deg) translateY(-15px); }
+.flower-petal:nth-child(7) { transform: rotate(270deg) translateY(-15px); }
+.flower-petal:nth-child(8) { transform: rotate(315deg) translateY(-15px); }
+
+/* Flower center */
+.flower-center {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    100% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Flower opening animation */
+@keyframes flowerOpen {
+    0% { transform: scale(0.8) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(180deg); }
+    100% { transform: scale(1) rotate(360deg); }
+}
+
+.flower-open {
+    animation: flowerOpen 1.2s ease-out;
+}
+
+/* Logo text styles */
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-main {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #333;
+    line-height: 1;
+}
+
+.logo-main span {
+    color: #e74c3c;
+}
+
+.logo-tagline {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    color: #3498db;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .flower-container {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .flower {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .flower-petal {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .flower-petal:nth-child(1) { transform: rotate(0deg) translateY(-12px); }
+    .flower-petal:nth-child(2) { transform: rotate(45deg) translateY(-12px); }
+    .flower-petal:nth-child(3) { transform: rotate(90deg) translateY(-12px); }
+    .flower-petal:nth-child(4) { transform: rotate(135deg) translateY(-12px); }
+    .flower-petal:nth-child(5) { transform: rotate(180deg) translateY(-12px); }
+    .flower-petal:nth-child(6) { transform: rotate(225deg) translateY(-12px); }
+    .flower-petal:nth-child(7) { transform: rotate(270deg) translateY(-12px); }
+    .flower-petal:nth-child(8) { transform: rotate(315deg) translateY(-12px); }
+    
+    .flower-center {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .logo-main {
+        font-size: 20px;
+    }
+    
+    .logo-tagline {
+        font-size: 8px;
+    }
+}
